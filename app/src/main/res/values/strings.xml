@@ -5,6 +5,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="edamam_app_name"></string>
-    <string name="edamam_api_key"></string>
+    <string name="loading">Loading</string>
+    <string name="randomizing">Randomizing</string>
+    <string name="try_shake">Try shaking next time!</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="grams">grams</string>
 </resources>

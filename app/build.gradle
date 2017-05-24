@@ -19,6 +19,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'EDAMAM_APP_ID', EdamamAppId
+        it.buildConfigField 'String', 'EDAMAM_APP_KEY', EdamamAppKey
+    }
 }
 
 dependencies {
@@ -29,10 +34,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'net.opacapp:multiline-collapsingtoolbar:1.4.0'
+    compile 'com.squareup:seismic:1.0.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    testCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()
