@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
@@ -42,13 +41,8 @@ dependencies {
     compile 'com.squareup:seismic:1.0.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
-    debugCompile 'com.facebook.stetho:stetho:1.0.0'
-    debugCompile 'com.uphyca:stetho_realm:2.0.0'
     testCompile 'junit:junit:4.12'
 }
 repositories {
     mavenCentral()
-    maven {
-        url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
-    }
 }

@@ -17,4 +17,4 @@ data class Recipe(val uri: String,
                   val ingredientLines: List<String>,
                   val calories: Double,
                   val totalWeight: Double,
-                  val ingredients: List<Ingredient>) : RealmObject()
+                  val ingredients: List<Ingredient>)
