@@ -1,4 +1,4 @@
-package co.bwsc.oishi.model
+package co.bwsc.oishi.home
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import co.bwsc.oishi.R
 /**
  * Created by Ben on 5/24/2017.
  */
-class RecipeDetailAdapter(val titles: List<Pair<String, String>>) : RecyclerView.Adapter<RecipeDetailAdapter.ViewHolder>() {
+class HomeDetailAdapter(val titles: List<Pair<String, String>>) : RecyclerView.Adapter<HomeDetailAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = titles[position]
         holder.title.text = item.first
