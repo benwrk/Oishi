@@ -13,19 +13,25 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import co.bwsc.oishi.R
+import co.bwsc.oishi.R.id.nav_fav
+import co.bwsc.oishi.favorite.FavoriteActivity
 import co.bwsc.oishi.model.Recipe
 import co.bwsc.oishi.search.SearchActivity
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.miguelcatalan.materialsearchview.MaterialSearchView
 import com.squareup.picasso.Picasso
 import com.squareup.seismic.ShakeDetector
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
-import com.miguelcatalan.materialsearchview.MaterialSearchView
-
-
 
 
 open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ShakeDetector.Listener, HomeContract.HomeView {
+
+    var recipe: Recipe? = null
+    var databaseRef: DatabaseReference? = null
+
     override fun showLoading() {
         collapsing_toolbar_layout.title = getString(R.string.loading) + "..."
         home_image.setImageDrawable(null)
@@ -51,12 +57,15 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         home_recycler.adapter = HomeDetailAdapter(details)
 
+        this.recipe = recipe
+        databaseRef = FirebaseDatabase.getInstance().getReference("Recipes").push()
+
         Picasso.with(this).load(recipe.image).into(home_image)
     }
 
     val presenter = HomePresenter(this)
 
-    open override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
@@ -64,14 +73,24 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
 
         home_recycler.layoutManager = LinearLayoutManager(this)
 
-        fab.setOnClickListener {
+        fab_random.setOnClickListener { view ->
             presenter.loadRandomRecipe()
-            Snackbar.make(drawer_layout.rootView, getString(R.string.try_shake),
+            Snackbar.make(view, getString(R.string.try_shake),
                     Snackbar.LENGTH_SHORT).show()
+        }
+
+        fab_fav.setOnClickListener { view ->
+            if (recipe != null && databaseRef != null) {
+                databaseRef!!.setValue(recipe)
+                Snackbar.make(view, getString(R.string.saved), Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+
 
         nav_view.setNavigationItemSelectedListener(this)
         initializeShakeDetector()
@@ -135,6 +154,9 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
+            nav_fav -> {
+                startActivity(Intent(this, FavoriteActivity::class.java))
+            }
 //            nav_camera -> TODO()
 //            nav_gallery -> TODO()
 //            nav_slideshow -> TODO()

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <!-- A CardView that contains a TextView -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:layout_margin="16dp"
+        card_view:cardCornerRadius="4dp">
+
+        <ImageView
+            android:id="@+id/info_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_sandwich" />
+
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:id="@+id/info_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:text="Ham Cheese Sandwich"
+                android:textColor="#333"
+                android:textSize="16sp" />
+            <TextView
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:id="@+id/info_calorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:text="250"
+                android:textColor="#333"
+                android:textSize="16sp" />
+
+            <TextView
+                android:paddingStart="16dp"
+                android:paddingTop="5dp"
+
+                android:id="@+id/info_calorie_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:text="Kilo-calorie" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

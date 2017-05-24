@@ -1,10 +1,19 @@
-package co.bwsc.oishi.recipe_detail
+package co.bwsc.oishi.favorite
 
-import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import co.bwsc.oishi.model.Recipe
+import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 
-class DetailActivity : AppCompatActivity(), DetailContract.DetailView {
+import co.bwsc.oishi.R
+import co.bwsc.oishi.model.Recipe
+import kotlinx.android.synthetic.main.activity_favorite.*
+
+class FavoriteActivity : AppCompatActivity(), FavoriteContract.FavoriteView {
+    override fun loadData(list: List<Recipe>) {
+        favorite_recycler.adapter = FavoriteAdapter(list)
+    }
+
+    val presenter = FavoritePresenter(this)
     override fun showLoading() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -17,14 +26,14 @@ class DetailActivity : AppCompatActivity(), DetailContract.DetailView {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun showRecipe(recipe: Recipe) {
+    override fun updateRecipes(recipes: List<Recipe>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    val presenter = DetailPresenter(this)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_favorite)
+        favorite_recycler.layoutManager = LinearLayoutManager(this)
+        presenter.loadFavorites()
     }
-
 }

@@ -29,10 +29,11 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <!--<activity android:name=".recipe_detail.DetailActivity" />-->
+        <!-- <activity android:name=".recipe_detail.DetailActivity" /> -->
         <activity
             android:name=".search.SearchActivity"
             android:parentActivityName=".home.HomeActivity" />
+        <activity android:name=".favorite.FavoriteActivity"></activity>
     </application>
 
 </manifest>
