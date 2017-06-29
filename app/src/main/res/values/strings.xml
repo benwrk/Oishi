@@ -10,4 +10,14 @@
     <string name="try_shake">Try shaking next time!</string>
     <string name="recipe_image">Recipe image</string>
     <string name="grams">grams</string>
+    <string name="action_search">Search</string>
+    <string name="action_filter">Filter</string>
+    <string name="search_hint">Search recipes</string>
+    <string name="search_query_extra_key">SEARCH_QUERY</string>
+    <string name="saved">Saved</string>
+    <string name="favorites">Favorites</string>
+    <string name="home">Home</string>
+    <string name="delete">Delete</string>
+    <string name="kilo_calorie">Kilo-calorie</string>
+    <string name="recipe">Recipe</string>
 </resources>

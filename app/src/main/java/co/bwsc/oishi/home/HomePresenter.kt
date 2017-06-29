@@ -32,7 +32,6 @@ class HomePresenter(val view: HomeContract.HomeView) : HomeContract.HomePresente
 
             override fun onFailure(call: Call<RecipeResponse>?, t: Throwable?) {
                 Log.e(this.javaClass.simpleName, "Error getting recipes")
-                Log.e(this.javaClass.simpleName, "Error getting recipes")
             }
         })
     }
