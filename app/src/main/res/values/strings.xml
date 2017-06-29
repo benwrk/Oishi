@@ -17,4 +17,7 @@
     <string name="saved">Saved</string>
     <string name="favorites">Favorites</string>
     <string name="home">Home</string>
+    <string name="delete">Delete</string>
+    <string name="kilo_calorie">Kilo-calorie</string>
+    <string name="recipe">Recipe</string>
 </resources>

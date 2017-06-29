@@ -1,7 +1,5 @@
 package co.bwsc.oishi.recipe_detail
 
-import co.bwsc.oishi.recipe_detail.DetailContract
-
 /**
  * Created by Ben on 5/24/2017.
  */

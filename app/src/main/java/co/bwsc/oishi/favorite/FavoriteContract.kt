@@ -15,12 +15,12 @@ interface FavoriteContract {
         fun showError(message: String)
 
         fun updateRecipes(recipes: List<Recipe>)
-
-        fun loadData(list: List<Recipe>)
     }
 
     interface FavoritePresenter {
 
         fun loadFavorites()
+
+        fun deleteFavorite(recipe: Recipe)
     }
 }

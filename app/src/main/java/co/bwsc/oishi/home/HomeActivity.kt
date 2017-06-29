@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
 
 
-open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ShakeDetector.Listener, HomeContract.HomeView {
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ShakeDetector.Listener, HomeContract.HomeView {
 
     var recipe: Recipe? = null
     var databaseRef: DatabaseReference? = null
@@ -53,7 +53,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         details.add(Pair(String.format("%.2f", recipe.calories), "Kilo-calories"))
 
         val ingredients = recipe.ingredients
-        ingredients.mapTo(details) { Pair(it.text, String.format("%.2f ", it.weight) + getString(R.string.grams)) }
+        ingredients!!.mapTo(details) { Pair(it.text, String.format("%.2f %s", it.weight, getString(R.string.grams))) }
 
         home_recycler.adapter = HomeDetailAdapter(details)
 
@@ -154,15 +154,7 @@ open class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            nav_fav -> {
-                startActivity(Intent(this, FavoriteActivity::class.java))
-            }
-//            nav_camera -> TODO()
-//            nav_gallery -> TODO()
-//            nav_slideshow -> TODO()
-//            nav_manage -> TODO()
-//            nav_share -> TODO()
-//            nav_send -> TODO()
+            nav_fav -> startActivity(Intent(this, FavoriteActivity::class.java))
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true

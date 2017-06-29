@@ -33,7 +33,10 @@
         <activity
             android:name=".search.SearchActivity"
             android:parentActivityName=".home.HomeActivity" />
-        <activity android:name=".favorite.FavoriteActivity"></activity>
+        <activity
+            android:name=".favorite.FavoriteActivity"
+            android:parentActivityName=".home.HomeActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
